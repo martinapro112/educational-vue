@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Vue.js demonstration</title>
+  <script src="https://unpkg.com/vue"></script> <!-- Vue.js framework -->
+  <link rel="stylesheet" type="text/css" media="screen" href="style.css" /> <!-- your custom styles file -->
+
+  <!-- bootstrap style file -->
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" />
+</head>
+<body>
+  <div id="app" :class="{ light: lightTheme, dark: !lightTheme }">
+
+    <div class="card">
+      <div class="card-body">
+        <h5 class="card-title">Data and method example</h5>
+        <!-- this is how to use component data value -->
+        <!-- in plain text -->
+        {{ numberOfClicks }}<br />
+        <!-- in tag attribute -->
+        <a :href="someURL" target="_blank">random link</a><br />
+        <!-- this is how to use component methods -->
+        <button type="button" class="btn btn-primary" @click="buttonClick">CLICK ME</button>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="card-body">
+        <h5 class="card-title">Input field binding example</h5>
+        <!-- this is how you connect a text field to a data value -->
+        <input
+          name="numberInput"
+          v-model="numberInput"
+          type="number"
+        ></input><br />
+        {{ numberInput }}
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="card-body">
+        <h5 class="card-title">Iteration example</h5>
+        <!-- this is how you use cycles in vue html -->
+        <template v-for="n in 3">
+          <input
+            type="radio"
+            id="radioGroup"
+            v-model="radioGroup"
+            :key="n"
+            :label="`Radio ${n}`"
+            :value="n"
+          ></input>
+          Radio {{ n }}
+          <br />
+        </template>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="card-body">
+        <h5 class="card-title">Table example</h5>
+        <table class="table table-bordered table-sm">
+          <thead>
+            <tr>
+              <th v-for="header in table1.headers">{{ header }}</th>
+            </tr>
+          </thead>
+          <tbody>
+            <!-- this is how you use cycles in vue html - cycling through array + using indexes -->
+            <tr v-for="(item, index) in table1.items">
+              <td>{{ index + 1 }}</td>
+              <td>{{ item.name }}</td>
+              <td>{{ item.amount }}</td>
+            </tr>
+        </tbody>
+        </table>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="card-body">
+        <h5 class="card-title"h3>Condition and icon example</h5>
+        <!-- this is how you use conditions in vue html -->
+        <template v-if="lightTheme">
+          <button type="button" class="btn btn-dark" @click="switchTheme"><span class="glyphicon glyphicon-link"></span> dark</button>
+        </template>
+        <template v-else>
+          <button type="button" class="btn btn-light" @click="switchTheme"><i class="fa fa-car"></i> light</button>
+        </template>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="card-body">
+        <h5 class="card-title">Computed data example</h5>
+        {{ summaryMessage }}
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="card-body">
+        <h5 class="card-title">Guides</h3>
+        <a href="http://vuejs.org/guide/" target="_blank">Vue.js guide</a><br />
+        <a href="https://getbootstrap.com/docs/4.0/components/" target="_blank">Bootstrap guide</a><br />
+        <a href="http://www.vikingcodeschool.com/software-engineering-basics/basic-principles-of-software-engineering" target="_blank">Principles</a><br />
+        <img 
+          src="https://vuejs.org/images/logo.png" 
+          :style="{ width: 100 + (numberOfClicks * 20) + 'px' }"
+        /><!-- this is how to add conditional styles -->
+      </div>
+    </div>
+  </div>
+  <script src="script.js"></script> <!-- your custom Vue.js file -->
+</body>
+</html>

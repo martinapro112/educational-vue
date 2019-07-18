@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>JavaScript app</title>
+</head>
+<body>
+  <div id="app">
+    <img src="https://gocode.academy/wp-content/uploads/2018/06/javascript-logo.png" alt="JavaScript logo">
+    <h1>JavaScript app</h1>
+    To learn more about JavaScript, visit
+    <a href="https://www.w3schools.com/js/" target="_blank">www.w3schools.com/js/</a>
+    <br /><br />
+    <button onclick="addClick()">Click me</button>
+    You clicked <span id="clicks">0</span> times.
+  </div>
+
+  <script>
+    function addClick() {
+      var element = document.getElementById("clicks");
+      var currentNumber = Number(element.innerHTML);
+      element.innerHTML = currentNumber + 1;
+    }
+  </script>
+  <style>
+    img {
+      width: 200px;
+    }
+  </style>
+</body>
+</html>

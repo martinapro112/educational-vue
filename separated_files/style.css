@@ -1,0 +1,14 @@
+.light .card {
+    background-color: white;
+    color: black;
+}
+
+.dark .card {
+    background-color: black;
+    color: white;
+    border-color: white;
+}
+
+.dark a {
+    color: pink;
+}

@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Vue.js demonstration</title>
+  <script src="https://unpkg.com/vue"></script> <!-- Vue.js framework -->
+  <script src="https://unpkg.com/vuetify/dist/vuetify.js"></script> <!-- Vuetify framework -->
+  <link rel="stylesheet" type="text/css" media="screen" href="style.css" /> <!-- your custom styles file -->
+
+  <!-- Vuetify styles -->
+  <link href='https://fonts.googleapis.com/css?family=Roboto:300,400,500,700|Material+Icons' rel="stylesheet" />
+  <link href="https://unpkg.com/vuetify/dist/vuetify.min.css" rel="stylesheet" />
+
+</head>
+<body>
+  <div id="app">
+    <v-app>
+        <v-content :class="{ light: lightTheme, dark: !lightTheme }"><!-- this is how to add contitional classes -->
+          <v-container>
+
+              <v-container>
+                <h3>Data and method example</h3>
+                <!-- this is how to use component data value -->
+                <!-- in plain text -->
+                {{ numberOfClicks }}<br />
+                <!-- in tag attribute -->
+                <a :href="someURL" target="_blank">random link</a><br />
+                <!-- this is how to use component methods -->
+                <v-btn class="success" @click="buttonClick">CLICK ME</v-btn>
+              </v-container>
+
+              <v-container>
+                <h3>Text field binding example</h3>
+                <!-- this is how you connect a text field to a data value -->
+                <v-text-field
+                  name="textInput"
+                  :value="textInput"
+                  v-model="textInput"
+                  type="number"
+                ></v-text-field>
+                {{ textInput }}
+              </v-container>
+
+              <v-container>
+                <h3>Iteration example</h3>
+                <v-radio-group v-model="radioGroup">
+                  <!-- this is how you use cycles in vue html -->
+                  <v-radio
+                    v-for="n in 3"
+                    :key="n"
+                    :label="`Radio ${n}`"
+                    :value="n"
+                  ></v-radio>
+                </v-radio-group>
+
+              </v-container>
+
+              <v-container>
+                <h3>Table example</h3>
+                <v-data-table
+                  :headers="table1.headers"
+                  :items="table1.items"
+                  hide-actions
+                >
+                  <template slot="items" slot-scope="props">
+                    <td>{{ props.item.name }}</td>
+                    <td>{{ props.item.amount }}</td>
+                  </template>
+                </v-table>
+              </v-container>
+
+              <v-container>
+                <h3>Condition and icon example</h3>
+                <!-- this is how you use conditions in vue html -->
+                <template v-if="lightTheme">
+                  <v-btn fab dark @click="switchTheme"><v-icon>highlight</v-icon></v-btn>
+                </template>
+                <template v-else>
+                  <v-btn fab @click="switchTheme"><v-icon>highlight</v-icon></v-btn>
+                </template>
+              </v-container>
+
+              <v-container>
+                <h3>Computed data example</h3>
+                {{ summaryMessage }}
+              </v-container>
+
+              <v-container>
+                <h3>Guides</h3>
+                <a href="http://vuejs.org/guide/" target="_blank">Vue.js guide</a><br />
+                <a href="https://vuetifyjs.com/en/" target="_blank">Vuetify guide</a><br />
+                <a href="https://material.io/icons/" target="_blank">Icons</a><br />
+                <img 
+                  src="https://vuejs.org/images/logo.png" 
+                  :style="{ width: 100 + (numberOfClicks * 20) + 'px' }"
+                /><br /><!-- this is how to add conditional styles -->
+              </v-container>
+
+          </v-container>
+        </v-content>
+      </v-app>
+  </div>
+  <script src="script.js"></script> <!-- your custom Vue.js file -->
+</body>
+</html>
